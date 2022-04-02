@@ -1,0 +1,157 @@
+---
+title: "College Placements"
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+
+This data set consists of Placement data of students in our campus. It includes secondary and higher secondary school percentage and specialization. It also includes degree specialization, type and Work experience and salary offers to the placed students.
+
+```{r}
+library(readxl)
+library(ggplot2)
+library(dplyr)
+stat <- read_excel("C:/Users/C V Abhiram/Desktop/Projects/Statistics/stat.xlsx")
+View(stat)
+
+```
+
+```{r cars}
+summary(stat)
+```
+
+DATA VIASUALIZATION:
+
+```{r}
+ggplot(stat, aes(x = SSC_B)) + geom_bar()
+ggplot(stat, aes(y = Degree_Stream)) + geom_bar()
+ggplot(stat, aes(y = Masters_Degree)) + geom_bar()
+```
+
+
+```{r}
+ggplot(stat, aes(x = SSC_CGPA)) + geom_histogram()
+ggplot(stat, aes(x = Inter_CGPA)) + geom_histogram()
+ggplot(stat, aes(x = Degree_CGPA)) + geom_histogram()
+
+```
+
+
+```{r}
+ggplot(stat, aes( x = Salary , y = SSC_CGPA)) + geom_point()
+ggplot(stat, aes( x = Salary , y = Inter_CGPA)) + geom_point()
+ggplot(stat, aes( x = Salary , y = Degree_CGPA)) + geom_point()
+
+
+```
+
+
+Regression Model: 
+
+We want to build a model for estimating Salary based on the marks optained in the schooling, inter and degree along with the work experience as follow:
+
+Salary = b0 + b1*SSC_CGPA + b2*Inter_CGPA + b3*Degree_CGPA + b4*Experience
+
+You can compute the model coefficients in R as follow:
+
+```{r}
+model<-lm(Salary~SSC_CGPA+Inter_CGPA+Degree_CGPA+Experience,data=stat)
+summary(model)
+coef(model)
+```
+
+
+From the model we got the values for the b0, b1, b2, b3, b4 and can formulate a regression line. The line is:
+
+y=167410.5900+(-1771.4448 )X1+(-580.1881)X2+(3474.5095)X3+(-36301.3809)X4
+
+We can use the regression equation created above to predict the salary based on the school, inter, degree percentage and experience.
+
+Example:
+
+We will predict the Salary of the person who's SSC_CGPA IS 8.5, Inter_CGPA IS 5.3, Degree_CGPA IS 7.5, Experience is 2 years.
+
+```{r}
+new.data <- data.frame(8.5,5.3,7.5,2)
+colnames(new.data) <- c("SSC_CGPA", "Inter_CGPA", "Degree_CGPA", "Experience")
+predict(model, newdata = new.data, interval = "confidence")
+```
+
+
+We got the predicted salary as 103286.6 .
+
+
+
+Chi-square-Test:
+
+Chi-Square test is a statistical method to determine if two categorical variables have a significant correlation between them. Both those variables should be from same population and they should be categorical like − Yes/No, Male/Female, Red/Green etc.
+
+
+Question 1:
+
+Our aim is to to find the correlation between the stream of student taken in degree  and placements obtained or not. now for our model we will consider the variables Degree_Stream and college_Placement from the data set.
+
+If correlation is observed we can estimate which type of stream can get good placement
+
+The process is indicated in the below steps:
+
+1. Define Hypothesis
+2. Performing Inference
+3. Interpret the results
+
+
+1. Define Hypothesis:
+
+The null hypothesis (H0H0):There is no significant difference between degree_stream and college_placement.
+
+The alternative hypothesis (HAHA): There is a significant difference between degree_stream and college_placement.
+
+2. Performing Inference:
+
+```{r}
+table(stat$Degree_Stream, stat$College_Placements)
+chisq.test(stat$Degree_Stream, stat$College_Placements)
+
+```
+
+
+3. Interpret the results:
+
+we got p-value less than 0.05. so, accept HAHA. so we can conclude that there is a significant difference between degree_stream and college_placement.
+
+
+
+Question 2:
+
+Our aim is to to find the correlation between the their Field and the Salary they are getting. Now for our model we will consider the variables Field and Salary from the data set.
+
+If correlation is observed we can estimate that which Field is getting better Salaries.
+
+
+The process is indicated in the below steps:
+
+1. Define Hypothesis
+2. Performing Inference
+3. Interpret the results
+
+
+1. Define Hypothesis:
+
+The null hypothesis (H0H0):There is no significant difference between Field and Salary.
+
+The alternative hypothesis (HAHA): There is no significant difference between Field and Salary.
+
+2. Performing Inference:
+
+
+```{r}
+table(stat$Field, stat$Salary)
+chisq.test(stat$Field, stat$Salary)
+```
+
+
+3. Interpret the results:
+
+we got p-value less than 0.05. so, accept HAHA. so we can conclude that there is no significant difference between Field and Salary.
+
