@@ -6,28 +6,14 @@ Have used basic statistical techniques like the Linear model and predict salarie
 The data set contains: - Real-Time data and Kaggle website Data,17 columns,215 rows. Sl_no,Name,Gender,Age,SSC_CGPA,SSC_B,Inter_CGPA,Inter_Board,Inter_stream,Degree_CGPA,Degree_Stream,College_placements,Placed_company,Experience,Master'sDegree ,Specialization, Salary
 
 
+# INTRODUCTION: 
+Placements are very important for each college. The campus placement of the students measures the basic success of the college. Every student takes admission to the colleges by seeing the percentage of placements in the college. Hence, in this regard, the approach is about the prediction and analyses for the placement necessity in the colleges that helps to build the colleges as well as students to improve their placements. Campus placements provide the students with a wonderful opportunity to start their careers right after completing their graduation.
+
+Moreover, they get to interact and engage with their company professionals during the placement drives, which further help lay a foundation for their prospective career in the future as they familiarise themselves with potential contacts from their chosen career field. Placements have gradually become an integral part of an institute’s offerings, which was not the scenario earlier. Nowadays, students pay special attention to placement records while selecting a college or university for admission.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# DESCRIPTION:
+This data set consists of Placement data of students in our campus. It includes secondary and higher secondary school percentage and specialization. It also includes degree specialization, type and Work experience and salary offers to the placed students.
 
 
 # CONCLUSION:
