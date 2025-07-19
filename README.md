@@ -1,3 +1,3 @@
-# college-placements-analysis-r
+# College-Placements-Analysis-r
 
 This project focuses on analyzing college placement data using R to explore the factors that impact a student’s chances of getting placed. Using an end-to-end data science workflow, the project covers data cleaning, exploratory data analysis (EDA), visualization, and basic statistical inference. We examined variables such as gender, degree specialization, academic performance, work experience, and placement status. By leveraging R packages like ggplot2, dplyr, and tidyr, we uncovered meaningful patterns—for example, how work experience and higher academic percentages correlate positively with placement outcomes. The analysis offers insights that can guide students in career preparation and help academic institutions improve placement strategies. The final result is a reproducible R Markdown report that can be easily extended or adapted for similar datasets.
